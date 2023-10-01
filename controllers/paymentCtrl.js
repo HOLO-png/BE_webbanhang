@@ -4,9 +4,9 @@ const url = require("url");
 const sendEMailPurchase = require("../utils/sendMailPurchase.js");
 
 // const baseURL = "https://buihoanglong19012001.netlify.app/";
-const baseURL = "http://localhost:1901/";
+const baseURL = "https://fe-webbanhang.onrender.com/";
 // const baseURLBE = "https://server-node-js-y5ds.vercel.app/api";
-const baseURLBE = "http://localhost:8800/api";
+const baseURLBE = "https://be-webbanhang.onrender.com/api";
 
 const paypalProductCtrl = {
   createPaypalPayment: async (req, res) => {
