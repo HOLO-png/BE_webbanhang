@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require('mongoose');
 const paypal = require('paypal-rest-sdk');
 const dotenv = require('dotenv');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const userRoute = require('./routes/users.js');
 const authRoute = require('./routes/auth.js');
@@ -60,14 +59,6 @@ app.use(
   })
 );
 app.use(function (req, res, next) {
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json');
-  headers.append(
-    'Authorization',
-    'Basic ' + base64.encode(username + ':' + password)
-  );
-  headers.append('Origin', 'http://127.0.0.1:1901');
   res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:1901');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
