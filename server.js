@@ -48,13 +48,13 @@ mongoose
 
 //middleware
 app.all('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:1901/');
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:1901');
   next();
 });
 
 app.use(
   cors({
-    origin: 'http://127.0.0.1:1901/',
+    origin: 'http://127.0.0.1:1901',
     credentials: true,
     optionSuccessStatus: 200,
   })
@@ -67,12 +67,11 @@ app.use(function (req, res, next) {
     'Authorization',
     'Basic ' + base64.encode(username + ':' + password)
   );
-  headers.append('Origin', 'http://127.0.0.1:1901/');
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:1901/');
+  headers.append('Origin', 'http://127.0.0.1:1901');
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:1901');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
