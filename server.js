@@ -47,19 +47,19 @@ mongoose
 
 //middleware
 app.all('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:1901');
+  res.header('Access-Control-Allow-Origin', process.env.CLIENT_URL);
   next();
 });
 
 app.use(
   cors({
-    origin: 'http://127.0.0.1:1901',
+    origin: process.env.CLIENT_URL,
     credentials: true,
     optionSuccessStatus: 200,
   })
 );
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:1901');
+  res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
