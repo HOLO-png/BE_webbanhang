@@ -47,17 +47,39 @@ mongoose
   });
 
 //middleware
+app.all('*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', [
+    'http://127.0.0.1:1901/',
+    'https://fe-webbanhang.onrender.com/',
+  ]);
+  next();
+});
+
 app.use(
   cors({
     origin: ['http://127.0.0.1:1901/', 'https://fe-webbanhang.onrender.com/'],
     credentials: true,
+    optionSuccessStatus: 200,
   })
 );
 app.use(function (req, res, next) {
+  let headers = new Headers();
+
+  headers.append('Content-Type', 'application/json');
+  headers.append('Accept', 'application/json');
+  headers.append(
+    'Authorization',
+    'Basic ' + base64.encode(username + ':' + password)
+  );
+  headers.append('Origin', [
+    'http://127.0.0.1:1901/',
+    'https://fe-webbanhang.onrender.com/',
+  ]);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
+
   next();
 });
 
